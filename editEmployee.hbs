@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Employee</title>
+<style>
+  /* Reset CSS */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Body styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+
+  /* Form container */
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Form group */
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  /* Label styles */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  /* Input styles */
+  input[type="text"],
+  input[type="number"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  /* Button styles */
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  /* Back button styles */
+  .back-button {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+
+  .back-button:hover {
+    background-color: #495057;
+  }
+</style>
+</head>
+<body>
+
+<h3>Edit Employee</h3>
+
+{{#if msg}}
+<div class="alert">{{msg}}</div>
+{{/if}}
+
+{{#each rows}}
+<form method="post" action="/editEmployee/{{this.id}}">
+  <div class="form-container">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="{{this.name}}" required>
+    </div>
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" value="{{this.age}}" required>
+    </div>
+    <div class="form-group">
+      <label for="department">Department:</label>
+      <input type="text" id="department" name="department" value="{{this.department}}">
+    </div>
+    <div class="form-group">
+      <label for="position">Position:</label>
+      <input type="text" id="position" name="position" value="{{this.position}}">
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="number" id="salary" name="salary" value="{{this.salary}}">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" value="{{this.email}}">
+    </div>
+    <div class="form-group">
+      <button type="submit">Save</button>
+      <a href="/" class="back-button">Back</a>
+    </div>
+  </div>
+</form>
+{{/each}}
+
+</body>
+</html>
